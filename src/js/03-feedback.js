@@ -2,6 +2,10 @@
 const throttle = require('lodash.throttle');
 
 const form = document.querySelector('.feedback-form');
+const inpulEl = document.querySelector('input');
+const textareaEl = document.querySelector('textarea');
+inpulEl.setAttribute('required', '')
+textareaEl.setAttribute('required', '')
 
 const emailItem = form.elements.email;
 const messageItem = form.elements.message;
@@ -11,10 +15,12 @@ enterDataIntoForm();
 form.addEventListener('input', throttle(onFormInput, 500));
 form.addEventListener('submit', onFormSubmit);
 
+
+
+
 function onFormInput() {
   const email = emailItem.value;
-  const message = messageItem.value;
-
+const message = messageItem.value;
   localStorage.setItem('formData', JSON.stringify({ email, message }));
 }
 
